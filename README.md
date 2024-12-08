@@ -1,4 +1,4 @@
-# サービス名：animal-therapy
+# サービス名：Animal Bliss
 ## サービス概要
 短時間で癒されることを目的とした、youtubeに投稿されている動物のショート動画を共有し合えるサービスです。<br>
 ## このサービスへの思い・作りたい理由
@@ -43,7 +43,7 @@ MVPリリース<br>
 | バックエンド | Ruby 3.2.2 / Ruby on Rails 7.1.3 |
 | データベース | PostgreSQL |
 | 環境構築 | Docker |
-| インフラ | Fly.io |
+| インフラ | Render.com |
 | CSS | tailwind CSS |
 | その他 | Sorcery, CarrierWave, letter_opener_web, Youtube API |
 ## 画面遷移図
