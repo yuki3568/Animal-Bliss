@@ -1,0 +1,12 @@
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <% @videos.each do |video| %>
+    <div class="card w-full bg-white shadow-lg">
+      <figure>
+        <%= raw embed_youtube(video.url) %>
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title"><%= video.title %></h2>
+      </div>
+    </div>
+  <% end %>
+</div>
