@@ -13,10 +13,22 @@ class VideosController < ApplicationController
 
   def create
     @video = Video.new(video_params)
+    @video.user_id = current_user.id
     if @video.save
-      redirect_to @video, notice: '動画が投稿されました'
+      redirect_to videos_path, success: "動画が投稿されました"
     else
-      render :new
+      flash.now[:error] = "動画投稿が失敗しました"
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    video = Video.find(params[:id])
+    if video.user_id == current_user.id
+      video.destroy!
+      redirect_to videos_path, notice: "動画を削除しました"
+    else
+      redirect_to videos_path, alert: "削除権限がありません"
     end
   end
 
