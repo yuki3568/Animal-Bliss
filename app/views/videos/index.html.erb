@@ -1,0 +1,15 @@
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <% @videos.each do |video| %>
+    <div class="card w-full max-w-xs mx-auto bg-white shadow-lg">
+      <figure>
+        <%= raw embed_youtube(h(video.url)) %>
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title"><%= link_to video.title, video_path(video), class: "nav-link" %></h2>
+        <% if video.user_id == current_user.id %>
+          <%= link_to '削除', video_path(video), id: "button-delete-#{video.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
