@@ -26,9 +26,9 @@ class VideosController < ApplicationController
     video = Video.find(params[:id])
     if video.user_id == current_user.id
       video.destroy!
-      redirect_to videos_path, notice: "動画を削除しました"
+      redirect_to videos_path, success: "動画を削除しました"
     else
-      redirect_to videos_path, alert: "削除権限がありません"
+      redirect_to videos_path, error: "削除権限がありません"
     end
   end
 
