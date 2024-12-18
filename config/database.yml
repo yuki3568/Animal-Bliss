@@ -84,6 +84,7 @@ test:
 production:
   primary: &primary_production
     <<: *default
+    host: postgre
     database: myapp_production
     username: myapp
     password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
