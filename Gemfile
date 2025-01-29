@@ -45,6 +45,8 @@ gem "sorcery", "0.16.3"
 
 gem "rails-i18n", "~> 8.0.0"
 
+gem 'draper', '4.0.2'
+
 gem "dotenv-rails"
 
 group :development, :test do
