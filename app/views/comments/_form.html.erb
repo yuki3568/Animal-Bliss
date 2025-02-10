@@ -1,8 +1,9 @@
-<div class="flex flex-col" id="comment-form">
+<div class="my-8" id="comment-form">
   <div class="col-lg-8 offset-lg-2">
     <%= form_with model: comment, url: video_comments_path(video) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
       <%= f.label :body %>
-      <%= f.text_area :body, class: "form-control mb-3", row: "4", placeholder: Comment.human_attribute_name(:body) %>
+      <%= f.text_area :body, class: "form-input mb-3 w-3/4 textarea textarea-primary flex flex-col", row: "4", placeholder: Comment.human_attribute_name(:body) %>
       <%= f.submit t('defaults.post'), class: "btn btn-primary" %>
     <% end %>
   </div>

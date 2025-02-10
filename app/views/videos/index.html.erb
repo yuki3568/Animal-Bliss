@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
   <% @videos.each do |video| %>
-    <div class="card w-full max-w-xs mx-auto bg-white shadow-lg">
+    <div class="card max-w-xs mx-auto bg-white shadow-lg my-8">
       <figure>
         <%= raw embed_youtube(h(video.url)) %>
       </figure>
