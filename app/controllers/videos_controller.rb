@@ -1,10 +1,14 @@
 class VideosController < ApplicationController
+  before_action :require_login
+
   def index
     @videos = Video.all
   end
 
   def show
     @video = Video.find(params[:id])
+    @comment = Comment.new
+    @comments = @video.comments.includes(:user).order(created_at: :desc)
   end
 
   def new

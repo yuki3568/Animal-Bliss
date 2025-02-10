@@ -1,6 +1,21 @@
-<div class="h-screen flex items-center justify-center">
-<figure>
-  <%= raw embed_youtube(h(@video.url)) %>
-  <h2 class="card-title"><%= link_to @video.title, class: "nav-link" %></h2>
-</figure>
-</div>
+<div class="flex justify-center my-8">
+  <div class="col-lg-8 offset-lg-2">
+    <div class="border-2 border-gray-500/50 rounded-lg p-4"> 
+      <figure>
+        <%= raw embed_youtube(h(@video.url)) %>
+        <h2 class="card-title"><%= link_to @video.title, class: "nav-link" %></h2>
+      </figure>
+    </div>
+    <%= render 'comments/form', comment: @comment, video: @video %>
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="max-h-40 overflow-y-auto">
+          <table class="table">
+            <tbody id="table-comment">
+            <%= render @comments %>
+          </tbody>
+        </div>
+      </div>
+    </div>
+  </div>
+<div>

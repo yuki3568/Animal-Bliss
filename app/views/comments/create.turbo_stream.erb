@@ -1,0 +1,15 @@
+# @comment にエラーがあるかどうかを確認
+<% if @comment.errors.present? %>
+  <%= turbo_stream.replace "comment-form" do %>
+    <%= render 'comments/form', comment: @comment, video: @comment.video %>
+  <% end %>
+# エラーが存在する場合、フォームをエラーメッセージ付きで再表示する
+<% else %>
+  <%= turbo_stream.prepend "table-comment" do %>
+    <%= render 'comments/comment', comment: @comment %>
+  <% end %>
+# エラーがない場合、新しいコメントをコメントリストの最初に追加
+  <%= turbo_stream.replace "comment-form" do %>
+    <%= render 'comments/form', comment: Comment.new, video: @comment.video %>
+  <% end %>
+<% end %>

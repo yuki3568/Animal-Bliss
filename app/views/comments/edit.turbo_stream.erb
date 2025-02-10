@@ -1,0 +1,6 @@
+<%= turbo_frame_tag comment do %>
+  <%= form_for @comment do |f| %>
+    <%= f.text_field :body %>
+    <%= f.submit "更新" %>
+  <% end %>
+<% end %>
