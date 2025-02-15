@@ -29,4 +29,10 @@ ja:
     logout: ログアウト
     video_posting: 動画投稿
     video_index: 動画投稿一覧
-    
+  bookmarks:
+      title: ブックマーク一覧
+      no_result: ブックマーク中の動画がありません。
+      create:
+        success: ブックマークしました
+      destroy:
+        success: ブックマークを外しました

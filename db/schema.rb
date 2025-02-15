@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_28_092455) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_11_060714) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "video_id"], name: "index_bookmarks_on_user_id_and_video_id", unique: true
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+    t.index ["video_id"], name: "index_bookmarks_on_video_id"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id"
@@ -50,6 +60,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_28_092455) do
     t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
+  add_foreign_key "bookmarks", "users"
+  add_foreign_key "bookmarks", "videos"
   add_foreign_key "comments", "users"
   add_foreign_key "comments", "videos"
   add_foreign_key "videos", "users"
