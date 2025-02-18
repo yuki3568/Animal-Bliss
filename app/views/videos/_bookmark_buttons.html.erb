@@ -1,0 +1,5 @@
+  <% if current_user.bookmark?(video) %>
+    <%= render "unbookmark", { video: video } %>
+  <% else %>
+    <%= render "bookmark", { video: video } %>
+  <% end %>

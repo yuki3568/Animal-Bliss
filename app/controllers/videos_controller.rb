@@ -36,6 +36,10 @@ class VideosController < ApplicationController
     end
   end
 
+  def bookmarks
+    @bookmark_videos = current_user.bookmark_videos.includes(:user).order(created_at: :desc)
+  end
+
   private
 
   def video_params

@@ -1,0 +1,5 @@
+<%= turbo_stream.append "flash_messages", partial: "shared/flash_message", locals: { flash: flash } %>
+
+<%= turbo_stream.replace "bookmark-button-for-video-#{@video.id}" do %>
+  <%= render "videos/unbookmark", video: @video %>
+<% end %>

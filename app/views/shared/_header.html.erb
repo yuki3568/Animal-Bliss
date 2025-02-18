@@ -3,6 +3,7 @@
     <%= link_to 'Animal Bliss', root_path, class: "text-xl" %>
   </div>
   <ul class="menu menu-vertical lg:menu-horizontal bg-gray-400 rounded-box">
+   <li><%= link_to t('bookmarks.title'), bookmarks_videos_path, class: 'nav-link' %></li>
    <li><%= link_to t('header.video_index'), videos_path, class: "nav-link" %></li>
    <li><%= link_to t('header.video_posting'), new_video_path, class: "nav-link" %></li>
    <li><%= link_to t('header.logout'), logout_path, class: "nav-link", data: { turbo_method: :delete } %></li>
