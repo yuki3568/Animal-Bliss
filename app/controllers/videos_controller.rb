@@ -1,5 +1,6 @@
 class VideosController < ApplicationController
   before_action :require_login
+  include VideosHelper
 
   def index
     @videos = Video.all
@@ -18,10 +19,11 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(video_params)
     @video.user_id = current_user.id
-    if @video.save
+    if check_short_video_url?(@video.url)
+      @video.save
       redirect_to videos_path, success: "動画が投稿されました"
     else
-      flash.now[:error] = "動画投稿が失敗しました"
+      flash.now[:error] = "YouTubeショート動画のURLを入力してください"
       render :new, status: :unprocessable_entity
     end
   end
