@@ -1,0 +1,14 @@
+<div class="h-screen flex items-top justify-center mt-10">
+  <div class="row">
+    <div class=" col-md-10 col-lg-8 mx-auto">
+      <h1 class="text-xl md:text-4xl font-bold  mt-10 mb-10 pb-4 border-b-2 border-stone-400 text-center">パスワードリセット申請フォーム</h1>
+      <%= form_with url: password_resets_path, local: true, method: :post do |form| %>
+        <div class="field">
+          <%= form.label :email %><br />
+          <%= form.text_field :email, class: "form-control border border-gray-300 rounded" %>
+          <%= form.submit t('password_resets.new.submit'), class: "btn btn-primary mt-10" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
