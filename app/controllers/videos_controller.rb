@@ -21,9 +21,9 @@ class VideosController < ApplicationController
     @video.user_id = current_user.id
     if check_short_video_url?(@video.url)
       @video.save
-      redirect_to videos_path, success: "動画が投稿されました"
+      redirect_to videos_path, success: t("video.create.success"), item: Video.model_name.human
     else
-      flash.now[:error] = "YouTubeショート動画のURLを入力してください"
+      flash.now[:error] = t("video.create.error")
       render :new, status: :unprocessable_entity
     end
   end
@@ -32,9 +32,9 @@ class VideosController < ApplicationController
     video = Video.find(params[:id])
     if video.user_id == current_user.id
       video.destroy!
-      redirect_to videos_path, success: "動画を削除しました"
+      redirect_to videos_path, success: t("video.destroy.success", item: Video.model_name.human)
     else
-      redirect_to videos_path, error: "削除権限がありません"
+      redirect_to videos_path, error: t("video.destroy.error", item: Video.model_name.human)
     end
   end
 

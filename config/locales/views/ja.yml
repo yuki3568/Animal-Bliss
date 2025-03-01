@@ -10,16 +10,26 @@ ja:
   defaults:
     post: 投稿
     delete_confirm: 削除しますか？
+    password_reset: パスワードリセット
     flash_message:
       created: "%{item}を作成しました"
       not_created: "%{item}を作成出来ませんでした"
       require_login: ログインしてください
+      user_sessions:
+        create: ログインしました
+        not_create: ログインに失敗しました
+        destroy: ログアウトしました
   user_sessions:
     new:
       title: ログイン
       login: ログイン
       to_register_page: 登録ページへ
       password_forget: パスワードをお忘れの方はこちら
+    create:
+      success: ログインしました
+      error: ログインに失敗しました
+    destroy:
+      success: ログアウトしました
   users:
     new:
       title: ユーザー登録
@@ -29,6 +39,25 @@ ja:
     logout: ログアウト
     video_posting: 動画投稿
     video_index: 動画投稿一覧
+  password_resets:
+    new:
+      title: パスワードリセット申請
+      submit: 送信
+    edit:
+      title: パスワードリセット
+    create:
+      success: パスワードリセット手順を送信しました
+      error: メールアドレスを入力してください
+    update:
+      success: パスワードを変更しました
+      error: パスワード変更が失敗しました
+  video:
+    create:
+      success: 動画を投稿しました
+      error: YouTubeショート動画のURLを入力してください
+    destroy:
+      success: 動画を削除しました
+      error: 動画の削除に失敗しました
   bookmarks:
       title: ブックマーク一覧
       no_result: ブックマーク中の動画がありません。
