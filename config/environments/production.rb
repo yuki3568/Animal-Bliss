@@ -59,25 +59,28 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = Settings.default_url_options.to_h
-  config.action_mailer.raise_delivery_errors = true
 
+  # メールのキャッシングを無効にする設定。常に最新の情報でメールを送信する
+  config.action_mailer.perform_caching = false
+
+  host = "animal-bliss.onrender.com"
+  config.action_mailer.default_url_options = { protocol: "https", host: host }
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     # アプリケーションのメール送信機能を設定するためのオプションを指定
-    address:              "smtp.gmail.com",
+    address: "smtp.gmail.com",
     # SMTPサーバーとの通信に使うポート番号を指定。ポート587は、STARTTLSを使ったセキュアな通信に一般的に使われるポート
-    port:                 587,
+    port: 587,
     # アプリケーションがホストされているドメイン名を指定
-    domain:               "gmail.com",
-    user_name:            ENV["GMAIL_USERNAME"],
-    password:             ENV["GMAIL_PASSWORD"],
+    domain: "animal-bliss.onrender.com",
+    user_name: ENV["GMAIL_USERNAME"],
+    password: ENV["GMAIL_PASSWORD"],
     # メールの認証方式を指定。"plain"は、ユーザー名とパスワードをそのまま送信する方式で、Gmailで使う場合には一般的な設定
-    authentication:       "plain",
+    authentication: "plain",
     # STARTTLSを自動的に有効にする設定。これにより、SMTP通信がセキュアに行われ、通信が暗号化される
     enable_starttls_auto: true
   }
-
   # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
   # config.action_mailer.smtp_settings = {
   #   user_name: Rails.application.credentials.dig(:smtp, :user_name),
