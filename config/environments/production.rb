@@ -35,7 +35,7 @@ Rails.application.configure do
 
   # Log to STDOUT with the current request id as a default log tag.
   config.log_tags = [ :request_id ]
-  config.logger   = ActiveSupport::TaggedLogging.logger(STDOUT)
+  config.logger   = Logger.new("log/production.log", "monthly")
 
   # Change to "debug" to log everything (including potentially personally-identifiable information!)
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
@@ -68,17 +68,12 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    # アプリケーションのメール送信機能を設定するためのオプションを指定
     address: "smtp.gmail.com",
-    # SMTPサーバーとの通信に使うポート番号を指定。ポート587は、STARTTLSを使ったセキュアな通信に一般的に使われるポート
     port: 587,
-    # アプリケーションがホストされているドメイン名を指定
     domain: "animal-bliss.onrender.com",
     user_name: ENV["GMAIL_USERNAME"],
     password: ENV["GMAIL_PASSWORD"],
-    # メールの認証方式を指定。"plain"は、ユーザー名とパスワードをそのまま送信する方式で、Gmailで使う場合には一般的な設定
     authentication: "plain",
-    # STARTTLSを自動的に有効にする設定。これにより、SMTP通信がセキュアに行われ、通信が暗号化される
     enable_starttls_auto: true
   }
   # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
