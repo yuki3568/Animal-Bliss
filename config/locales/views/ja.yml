@@ -50,7 +50,7 @@ ja:
       error: メールアドレスを入力してください
     update:
       success: パスワードを変更しました
-      error: パスワード変更が失敗しました
+      error: パスワードの変更が失敗しました
   video:
     create:
       success: 動画を投稿しました
